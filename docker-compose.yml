@@ -1,0 +1,21 @@
+services:
+  inupco.sho:
+    image: ${DOCKER_REGISTRY-}inupcosho
+    build:
+      context: .
+      dockerfile: iNUPCO.SHO/Dockerfile
+
+    networks:
+        - iNUPCO_SHO
+    environment:
+      RABBITMQ__HostName: rabbitmq  # RabbitMQ container hostname
+      RABBITMQ__UserName: guest  # Default RabbitMQ username
+      RABBITMQ__Password: guest  # Default RabbitMQ password
+
+      
+networks:
+  iNUPCO_SHO:
+    name: rabbitmq_go_net
+    external: true
+
+

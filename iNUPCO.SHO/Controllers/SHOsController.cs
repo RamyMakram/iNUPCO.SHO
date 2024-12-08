@@ -29,7 +29,7 @@ namespace iNUPCO.SHO.Controllers
         [HttpPost]
         public async Task<IActionResult> AddSHO(SHODTO sho)
         {
-            poService.InsertSHO(sho);
+            await poService.InsertSHOAsync(sho);
             return Ok(new ResponseSchema(IsSuccess: true, StatusCode: 200));
         }
     }

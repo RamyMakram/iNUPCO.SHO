@@ -1,5 +1,6 @@
 ﻿using iNUPCO.SHO.Service.GoodService;
 using iNUPCO.SHO.Service.PODocumentService;
+using iNUPCO.SHO.Service.RabbitMQSrervice;
 using iNUPCO.SHO.Service.SHOService;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,6 +18,7 @@ namespace iNUPCO.SHO.Service
             services.AddScoped<IPOService, PODocumentService.POService>();
             services.AddScoped<IGoodService, GoodService.GoodService>();
             services.AddScoped<ISHOService, SHOService.SHOService>();
+            services.AddSingleton<IRabbitMQService, RabbitMQService>();
             return services;
         }
     }

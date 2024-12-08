@@ -13,6 +13,6 @@ namespace iNUPCO.SHO.Service.SHOService
     {
         IEnumerable<SHODTO> GetSHOs(PagginationDTO pagginationDTO);
         SHODTO GetSHO(long id);
-        void InsertSHO(SHODTO shoDTO);
+        Task InsertSHOAsync(SHODTO shoDTO);
     }
 }
