@@ -34,26 +34,25 @@ namespace iNUPCO.SHO.Service.SHOService
 
         public async Task InsertSHOAsync(SHODTO shoDTO)
         {
-            //var SHO = shoDTO.Adapt<Sho>();
+            var SHO = shoDTO.Adapt<Sho>();
 
-            //if (SHO == null)
-            //    throw new ArgumentNullException("SHO Is Null");
+            if (SHO == null)
+                throw new ArgumentNullException("SHO Is Null");
 
-            //var PO_Navigation = poRepository.Get(q => q.PoNumber == SHO.PodocumentNumber, new string[] { "Shos" });
+            var PO_Navigation = poRepository.Get(q => q.PoNumber == SHO.PodocumentNumber, new string[] { "Shos" });
 
-            //if (PO_Navigation == null)
-            //    throw new ArgumentNullException("PO Not Exist");
-            //if (PO_Navigation.Shos.Any())
-            //    throw new InvalidOperationException("PO Is Already Fillfulled");
-            //SHO.ShoNumber = new Service.SHOService.SHONumberGenrationStrategy.SHONumberGenrationProcessor(
-            //                        new Service.SHOService.SHONumberGenrationStrategy.SHONumberGenrationV1()
-            //                    )
-            //                    .ProcessGenrateNumber();
+            if (PO_Navigation == null)
+                throw new ArgumentNullException("PO Not Exist");
+            if (PO_Navigation.Shos.Any())
+                throw new InvalidOperationException("PO Is Already Fillfulled");
+            SHO.ShoNumber = new Service.SHOService.SHONumberGenrationStrategy.SHONumberGenrationProcessor(
+                                    new Service.SHOService.SHONumberGenrationStrategy.SHONumberGenrationV1()
+                                )
+                                .ProcessGenrateNumber();
 
-            //shoRepository.Insert(SHO);
-            //shoRepository.SaveChanges();
-            //await rabbitMQService.NotifyPOAsync(SHO.ShoNumber);
-            await rabbitMQService.NotifyPOAsync(12);
+            shoRepository.Insert(SHO);
+            shoRepository.SaveChanges();
+            await rabbitMQService.NotifyPOAsync(SHO.PodocumentNumber);
         }
     }
 }
