@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=RAMY-MAKRAM;Database=iNUPCO;TrustServerCertificate=True;User ID=wa;Password=1" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context iNUPCOContext -ContextDir Context -Schemas dbo -f -NoOnConfiguring
