@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iNUPCO.SHO.Service.PODocumentService.PONumberGenrationStrategy
+namespace iNUPCO.SHO.Service.SHOService.SHONumberGenrationStrategy
 {
-    public class PONumberGenrationV1 : IPONumberGenrationStrategy
+    public class SHONumberGenrationV1 : ISHONumberGenrationStrategy
     {
         public int GenrateNumber()
         {

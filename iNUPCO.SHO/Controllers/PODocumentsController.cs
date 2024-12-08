@@ -21,16 +21,5 @@ namespace iNUPCO.SHO.Controllers
             var podocuments = poService.GetPOs(pagginationDTO);
             return Ok(new ResponseSchema(IsSuccess: true, Data: podocuments, StatusCode: 200));
         }
-
-        /// <summary>
-        /// Return All PODocuments
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<IActionResult> AddPo(PODocumentDTO poDocument)
-        {
-            poService.InsertPO(poDocument);
-            return Ok(new ResponseSchema(IsSuccess: true,StatusCode: 200));
-        }
     }
 }

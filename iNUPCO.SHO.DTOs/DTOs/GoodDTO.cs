@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace iNUPCO.SHO.DTOs.DTOs
 {
-    public record GoodDTO(int Code, int Name);
+    public record GoodDTO(int Code, string Name);
 }

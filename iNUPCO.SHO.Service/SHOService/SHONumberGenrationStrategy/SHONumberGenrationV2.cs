@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace iNUPCO.SHO.Service.PODocumentService.PONumberGenrationStrategy
+namespace iNUPCO.SHO.Service.SHOService.SHONumberGenrationStrategy
 {
-    public class PONumberGenrationV2 : IPONumberGenrationStrategy
+    public class SHONumberGenrationV2 : ISHONumberGenrationStrategy
     {
         public int GenrateNumber()
         {
-            return (int)DateTime.Now.Ticks+20;
+            return (int)DateTime.Now.Ticks + 20;
         }
     }
 }

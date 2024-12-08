@@ -27,29 +27,5 @@ namespace iNUPCO.SHO.Service.PODocumentService
         {
             return poRepository.Get(q => q.PoNumber == PoNumber, new string[] { "PodocumentItems.GoodCodeNavigation" }).Adapt<PODocumentDTO>();
         }
-
-        public void InsertPO(PODocumentDTO _PODTO)
-        {
-            //PO.PoTotalAmount = PO.PodocumentItems;
-            var PO = _PODTO.Adapt<Podocument>();
-
-            if (PO == null)
-                throw new ArgumentNullException("PO Is Null");
-
-            if (PO.PodocumentItems.Count == 0)
-                throw new ArgumentNullException("PO Items Is Null");
-            if (PO.PodocumentItems.GroupBy(q => q.GoodCode).Any(q => q.Count() > 1))
-                throw new InvalidOperationException("Good Cannot Duplicated");
-
-            PO.PoDate = DateTime.Now;
-
-            PO.PoNumber = new PONumberGenrationStrategy.PONumberGenrationProcessor(
-                                    new PONumberGenrationStrategy.PONumberGenrationV1()
-                                )
-                                .ProcessGenrateNumber();
-
-            poRepository.Insert(PO);
-            poRepository.SaveChanges();
-        }
     }
 }

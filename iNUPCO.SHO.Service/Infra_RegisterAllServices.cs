@@ -1,4 +1,6 @@
 ﻿using iNUPCO.SHO.Service.GoodService;
+using iNUPCO.SHO.Service.PODocumentService;
+using iNUPCO.SHO.Service.SHOService;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,9 @@ namespace iNUPCO.SHO.Service
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            services.AddScoped<PODocumentService.IPOService, PODocumentService.POService>();
+            services.AddScoped<IPOService, PODocumentService.POService>();
             services.AddScoped<IGoodService, GoodService.GoodService>();
+            services.AddScoped<ISHOService, SHOService.SHOService>();
             return services;
         }
     }

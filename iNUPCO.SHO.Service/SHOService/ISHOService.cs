@@ -7,11 +7,12 @@ using iNUPCO.SHO.Data.Models;
 using iNUPCO.SHO.DTOs.DTOs;
 using iNUPCO.SHO.DTOs.Global;
 
-namespace iNUPCO.SHO.Service.PODocumentService
+namespace iNUPCO.SHO.Service.SHOService
 {
-    public interface IPOService
+    public interface ISHOService
     {
-        IEnumerable<PODocumentDTO> GetPOs(PagginationDTO pagginationDTO);
-        PODocumentDTO GetPO(long id);
+        IEnumerable<SHODTO> GetSHOs(PagginationDTO pagginationDTO);
+        SHODTO GetSHO(long id);
+        void InsertSHO(SHODTO shoDTO);
     }
 }
