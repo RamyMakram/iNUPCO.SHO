@@ -1,4 +1,12 @@
 services:
+  redis:
+        image: redis:latest
+        container_name: redis_cache
+        ports:
+          - "6379:6379"  # Redis default port
+        networks:
+          - redis_net
+
   inupco.sho:
     image: ${DOCKER_REGISTRY-}inupcosho
     build:
@@ -7,6 +15,7 @@ services:
 
     networks:
         - iNUPCO_SHO
+        - redis_net
     environment:
       RABBITMQ__HostName: rabbitmq  # RabbitMQ container hostname
       RABBITMQ__UserName: guest  # Default RabbitMQ username
@@ -17,5 +26,7 @@ networks:
   iNUPCO_SHO:
     name: rabbitmq_go_net
     external: true
+  redis_net:
+    driver: bridge  
 
 

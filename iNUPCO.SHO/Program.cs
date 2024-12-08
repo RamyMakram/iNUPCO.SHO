@@ -30,6 +30,12 @@ builder.Services.AddRateLimiter(options =>
                 }));
     options.RejectionStatusCode = 429; // Too Many Requests
 });
+// Add Redis caching to the services
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = "redis:6379";  // Redis container address
+    options.InstanceName = "SampleApp_";  // Optional instance name for Redis keys
+});
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
                        ?? "Server=RAMY-MAKRAM;Database=iNUPCO;TrustServerCertificate=True;User ID=wa;Password=1";
